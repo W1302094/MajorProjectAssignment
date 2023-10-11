@@ -1,4 +1,6 @@
 # MajorProjectAssignment
+My project is a continuation of my final project from CMIS201. I had originally designed for an Automotive Point-of-Sale System where the program has a shopping cart and after purchasing the items would record the details onto a receipt. A critique that I received was to make a way to store these records of users along with making a dynamic inventory database. I wanted to continue with these improvements in mind. My idea goal is to get a Point-of-Sale software off the ground considering that many businesses require these for their storefronts and companies like salesforce are thriving. For Part 1, the emphasis is on a working back-end inventory tracker for staff to utilize. As the project continues it will include the front-end storefront. The program can determine whether user is a customer or staff through an administrative password. (User: admin)(password: abc). 
+
 1.	The users of the software would be any retail stores owners.
 2.	The purpose of the software is to efficiently manage inventory of merchandise along with keeping track of customer purchases for business analysts. 
 3.	The software can be used for back-of-house teams along with front-of-house team member looking up items or customer history. 
