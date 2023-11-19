@@ -1,0 +1,116 @@
+Dodge,Rotors,123.40,5
+Ford,Brakes,123.45,56
+Ford,Calipers,123.45,56
+Ford,Rotors,9.98,12
+Dodge,Calipers,156.78,7
+Lincoln,nice Rotors,456.00,123
+Nissan,Exhaust,1243.78,2
+Toyota,Spark Plugs,5.99,78
+Chevrolet,Oxygen Sensor,29.99,42
+Ford,Exhaust System,199.99,20
+Honda,Shock Absorbers,49.99,55
+Nissan,Tires,89.99,30
+Hyundai,Ignition Coil,24.99,50
+Mazda,Synthetic Oil,39.99,65
+BMW,Air Filter,15.99,80
+Volkswagen,Serpentine Belt,12.99,45
+Chrysler,Brake Pads,29.99,60
+Jeep,Gasket Set,19.99,38
+Mercedes-Benz,Strut Assembly,79.99,25
+Audi,Car Stereo,89.99,18
+GMC,Brake Rotors,39.99,52
+Lexus,Battery,69.99,22
+Toyota,Fuel Pump,49.99,40
+Ford,Alternator,57.99,30
+Honda,Transmission Fluid,12.99,75
+Chevrolet,Radiator,79.99,28
+Nissan,Brake Calipers,34.99,48
+Hyundai,Timing Belt,22.99,55
+Subaru,Air Conditioning Compressor,149.99,15
+Dodge,Steering Rack,129.99,18
+Volkswagen,Clutch Kit,89.99,30
+BMW,Water Pump,59.99,40
+Mercedes-Benz,Control Arm,44.99,35
+Jeep,Wheel Bearings,19.99,60
+Lexus,Mass Air Flow Sensor,39.99,28
+GMC,Fuel Filter,8.99,90
+Chrysler,Tie Rod Ends,29.99,42
+Buick,PCV Valve,4.99,110
+Jaguar,Power Steering Pump,99.99,20
+Ram,Exhaust Manifold,69.99,25
+Mazda,Cabin Air Filter,12.99,55
+Toyota,Brake Pads,29.99,45
+Buick,Ignition Coil,24.99,55
+Nissan,Spark Plugs,5.99,78
+BMW,Oxygen Sensor,29.99,42
+Jeep,Exhaust System,199.99,20
+Toyota,Shock Absorbers,49.99,55
+Hyundai,Tires,89.99,30
+Ford,Ignition Coil,24.99,50
+Chrysler,Synthetic Oil,39.99,65
+Chevrolet,Air Filter,15.99,80
+GMC,Serpentine Belt,12.99,45
+Audi,Brake Pads,29.99,60
+Volkswagen,Gasket Set,19.99,38
+Mercedes-Benz,Strut Assembly,79.99,25
+Lexus,Car Stereo,89.99,18
+Mazda,Brake Rotors,39.99,52
+Honda,Battery,69.99,22
+Buick,Fuel Pump,49.99,40
+Subaru,Alternator,59.99,30
+Ram,Transmission Fluid,12.99,75
+Toyota,Radiator,79.99,28
+Dodge,Brake Calipers,34.99,48
+Volkswagen,Timing Belt,22.99,55
+Mercedes-Benz,Air Conditioning Compressor,149.99,15
+Lexus,Steering Rack,129.99,18
+Chevrolet,Clutch Kit,89.99,30
+Ford,Water Pump,59.99,40
+Hyundai,Control Arm,44.99,35
+Mazda,Wheel Bearings,19.99,60
+Audi,Mass Air Flow Sensor,39.99,28
+Toyota,Fuel Filter,8.99,90
+Buick,Tie Rod Ends,29.99,42
+Jaguar,PCV Valve,4.99,110
+Honda,Power Steering Pump,99.99,20
+Subaru,Exhaust Manifold,69.99,25
+Nissan,Cabin Air Filter,12.99,55
+Toyota,Brake Pads,29.99,45
+Buick,Ignition Coil,24.99,55
+Dodge,Spark Plugs,5.99,78
+Jeep,Oxygen Sensor,29.99,42
+Volkswagen,Exhaust System,199.99,20
+Honda,Shock Absorbers,49.99,55
+Buick,Tires,89.99,30
+Chrysler,Ignition Coil,24.99,50
+Ram,Synthetic Oil,39.99,65
+Mazda,Air Filter,15.99,80
+Toyota,Serpentine Belt,12.99,45
+Chevrolet,Brake Pads,29.99,60
+BMW,Gasket Set,19.99,38
+Hyundai,Strut Assembly,79.99,25
+Nissan,Car Stereo,89.99,18
+Lexus,Brake Rotors,39.99,52
+GMC,Battery,69.99,22
+Subaru,Fuel Pump,49.99,40
+Mercedes-Benz,Alternator,89.99,30
+Audi,Transmission Fluid,12.99,75
+Ford,Radiator,79.99,28
+Volkswagen,Brake Calipers,34.99,48
+Toyota,Timing Belt,22.99,55
+Lexus,Air Conditioning Compressor,149.99,15
+Honda,Steering Rack,129.99,18
+Chevrolet,Clutch Kit,89.99,30
+Mazda,Water Pump,59.99,40
+Subaru,Control Arm,44.99,35
+Nissan,Wheel Bearings,19.99,60
+Audi,Mass Air Flow Sensor,39.99,28
+Ford,Fuel Filter,8.99,90
+BMW,Tie Rod Ends,29.99,42
+Mercedes-Benz,PCV Valve,4.99,110
+Hyundai,Power Steering Pump,99.99,20
+Toyota,Exhaust Manifold,69.99,25
+Chrysler,Cabin Air Filter,12.99,55
+Buick,Brake Pads,29.99,45
+Jeep,Ignition Coil,24.99,55
+Nissan,Crankshaft Position Sensor,32.56,20
