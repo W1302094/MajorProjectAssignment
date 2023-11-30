@@ -16,8 +16,126 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.*;
 
+class Customer {
+    private String username;
+    private String password;
+
+    public Customer(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
+
+    public String getUsername(){
+        return username;
+    }
+    public String getPassword(){
+        return password;
+    }
+}
+
+class CustomerNode {
+    Customer customer;
+    CustomerNode left, right;
+
+    public CustomerNode(Customer customer){
+        this.customer = customer;
+        this.left = this.right = null;
+    }
+}
+
+class CustomerBST{
+    private CustomerNode root;
+
+    public CustomerBST(){
+        this.root = null;
+    }
+
+    public void insert(Customer customer){
+        root = insertRec(root, customer);
+    }
+
+    private CustomerNode insertRec(CustomerNode root, Customer customer){
+        if(root == null){
+            root = new CustomerNode(customer);
+            return root;
+        }
+        if(customer.getUsername().compareTo(root.customer.getUsername()) < 0){
+            root.left = insertRec(root.left, customer);
+        }
+        else if(customer.getUsername().compareTo(root.customer.getUsername()) > 0){
+            root.right = insertRec(root.right, customer);
+        }
+        return root;
+
+    }
+    public boolean search(String username, char[] password){
+        return searchRec(root, username, password);
+    }
+
+    private boolean searchRec(CustomerNode root, String username, char[] password){
+        if(root == null){
+            return false;
+        }
+        if(username.equals(root.customer.getUsername()) && charArrayToString(password).equals(root.customer.getPassword())){
+            return true;
+        }
+        if(username.compareTo(root.customer.getUsername()) < 0){
+            return searchRec(root.left, username, password);
+        }
+        else{
+            return searchRec(root.right, username, password);
+        }
+    }
+
+    private static String charArrayToString(char[] charArray) {
+        return new String(charArray);
+    }
+
+
+}
+
 
 public class CustomerManagement{
+    private static CustomerBST customerBST = new CustomerBST();
+
+    public static void main(String[] args){
+        loadCustomersIntoBST();
+        SwingUtilities.invokeLater(CustomerManagement::createAndShowGUI);
+    }
+
+    private static void loadCustomersIntoBST(){
+        File customerFilesDirectory = new File("customer_files");
+
+        if(customerFilesDirectory.exists() && customerFilesDirectory.isDirectory()){
+            File[] customerFiles = customerFilesDirectory.listFiles();
+
+            if(customerFiles != null){
+                for(File customerFile : customerFiles){
+                    if(customerFile.isFile() && customerFile.getName().endsWith(".txt")){
+                        try(BufferedReader br = new BufferedReader(new FileReader(customerFile))){
+                            String storedUsername = br.readLine();
+                            String storedPassword = br.readLine();
+
+                            String username = storedUsername.replace("Username: ", "");
+                            String password = storedPassword.replace("Password: ", "");
+
+                            Customer customer = new Customer(username, password);
+                            customerBST.insert(customer);
+
+                        } catch(IOException e){
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+
+
+        }
+        Customer admin = new Customer("admin" , "abc");
+        customerBST.insert(admin);
+    }
+
     public static void createAndShowGUI(){
 
         JFrame frame = new JFrame("Sign In Account");
@@ -34,17 +152,30 @@ public class CustomerManagement{
         JButton loginButton = new JButton("Login");
 
         ActionListener loginActionListener = e -> {
-
             String enteredUsername = usernameField.getText();
             char[] enteredPassword = passwordField.getPassword();
-            String filePath = "customer_files" + File.separator + enteredUsername + ".txt";
-            File customerFile = new File(filePath);
 
-            if (!customerFile.exists()) {
+            boolean isAuthorized = customerBST.search(enteredUsername, enteredPassword);
+
+            if(isAuthorized){
+                JOptionPane.showMessageDialog(frame, "Authorization successful");
+                frame.setVisible(false);
+                frame.dispose();
+
+                boolean isAdmin = checkAdminAuthorization(enteredUsername, enteredPassword);
+                if(isAdmin){
+                    SwingUtilities.invokeLater(CustomerManagement::openDynamicInventoryDatabase);
+                }else{
+                    displayCustomerItems(enteredUsername);
+                }
+            }else {
                 int choice = JOptionPane.showConfirmDialog(frame, "No Account found. Would you like to create a new account?",
                         "Create Account", JOptionPane.YES_NO_OPTION);
-                if(choice == JOptionPane.YES_OPTION) {
+                if (choice == JOptionPane.YES_OPTION) {
                     try {
+                        String filePath = "customer_files" + File.separator + enteredUsername + ".txt";
+                        File customerFile = new File(filePath);
+
                         FileWriter writer = new FileWriter(customerFile);
                         writer.write("Username: " + enteredUsername + "\n");
                         String result = charArrayToString(enteredPassword);
@@ -56,42 +187,13 @@ public class CustomerManagement{
                         f.printStackTrace();
                     }
 
-                }
-                else{
+                } else {
                     usernameField.setText("");
                     passwordField.setText("");
                     JOptionPane.showMessageDialog(frame, "Unfortunately without an account you may not enter the site");
                     frame.setVisible(false);
                     System.exit(0);
                 }
-            }
-
-            boolean isAuthorized = checkAuthorization(enteredUsername, enteredPassword, customerFile);
-
-            if (isAuthorized) {
-                JOptionPane.showMessageDialog(frame, "Authorization successful");
-                frame.setVisible(false);
-                frame.dispose();
-
-                boolean isAdmin = checkAdminAuthorization(enteredUsername, enteredPassword);
-                if(isAdmin){
-                    SwingUtilities.invokeLater(CustomerManagement::openDynamicInventoryDatabase);
-                }
-                else{
-                    displayCustomerItems(enteredUsername);
-                }
-                System.out.println("frame went away");
-
-            }
-            else {
-
-                JOptionPane.showMessageDialog(null,
-                        "Invalid Password",
-                        "Error", JOptionPane.ERROR_MESSAGE);
-                usernameField.setText("");
-                passwordField.setText("");
-                createAndShowGUI();
-
             }
         };
 
@@ -105,29 +207,14 @@ public class CustomerManagement{
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
 
-
-
     }
 
     private static boolean checkAdminAuthorization(String Username, char[] password){
 
         return Username.equals("admin") && charArrayToString(password).equals("abc");
     }
-    private static boolean checkAuthorization(String username, char[] password, File customerPath ){
-        try(BufferedReader br = new BufferedReader(new FileReader(customerPath))){
-            String storedUsername = br.readLine();
-            String storedPassword = br.readLine();
-            String result = charArrayToString(password);
-            String enteredUsername = storedUsername.replace("Username: ", "");
-            String enteredPassword = storedPassword.replace("Password: ", "");
-
-            return username.equals(enteredUsername) && result.equals(enteredPassword);
-
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-        return false;
+    private static boolean checkAuthorization(String username, char[] password){
+        return customerBST.search(username, password);
     }
     public static String charArrayToString(char[] charArray){
         return new String(charArray);
